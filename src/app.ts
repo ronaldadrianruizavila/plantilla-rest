@@ -1,26 +1,28 @@
 import Server from './server'
 import {API} from "./routes/api";
-import {json, urlencoded} from 'express';
-import cors from 'cors'
-import morgan from 'morgan';
+import { PORT,PUBLICFILES } from './env';
+import { configMiddleware } from './config/middleware'
+import express from 'express';
 
-let server  = new Server();
 
-/*MIDDLEWARES*/
-server.aplication.use(morgan('dev'));
+const server = Server.instance;
+const app = server.aplication
 
-//aceptar cors
-server.aplication.use(cors());
-
-//acceptar JSON
-server.aplication.use(urlencoded({ extended: true }));
-server.aplication.use(json());
+/*CONFIG MIDDLEWARES*/
+configMiddleware(app)
 
 //Rutas
-server.aplication.use(API);
+app.use(API);
+
+//static file
+
+app.use('/public',express.static(PUBLICFILES));
+
 
 /*FIN DE MIDDLEWARE*/
+
+
 //startAplication
-server.start(()=>{
-   console.log('Servidor corriendo 3000')
+server.start(() => {
+    console.log(`Servidor corriendo ${PORT}`)
 });
