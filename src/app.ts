@@ -1,5 +1,7 @@
 import Server from './server'
 import {API} from "./routes/api";
+import {WEB} from "./routes/web";
+
 import { PORT,PUBLICFILES } from './env';
 import { configMiddleware } from './config/middleware'
 import express from 'express';
@@ -9,10 +11,11 @@ const server = Server.instance;
 const app = server.aplication
 
 /*CONFIG MIDDLEWARES*/
-configMiddleware(app)
+configMiddleware(app);
 
 //Rutas
-app.use(API);
+app.use('/api',API);
+app.use(WEB);
 
 //static file
 

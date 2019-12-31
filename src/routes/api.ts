@@ -1,5 +1,8 @@
-import {Router} from "express";
-import userController from '../controllers/userController'
+import {Request, Response, Router} from "express";
 export const API = Router();
 
-API.get('/', userController.index);
+API.get('/', (req: Request,res: Response)=>{
+    res.send({status:'ok'})
+});
+
+

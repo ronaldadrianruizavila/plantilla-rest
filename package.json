@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "backsocketng",
   "version": "1.0.0",
   "description": "",
   "main": "build/app.js",
