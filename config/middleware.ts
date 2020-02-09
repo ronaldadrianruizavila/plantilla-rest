@@ -13,4 +13,4 @@ export const configMiddleware = (app: Application) => {
     //acceptar JSON
     app.use(urlencoded({ extended: true }));
     app.use(json());
-}
+};

@@ -1,5 +1,5 @@
 import {Request, Response, Router} from "express";
-import userController from '../app/Http/Controllers/userController'
+import userController from '../app/Http/Controllers/UserController'
 export const WEB = Router();
 
 WEB.get('/', userController.index);
